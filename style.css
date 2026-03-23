@@ -3,6 +3,22 @@
     padding: 0;
     font-family: 'Times New Roman', Times, serif;
     box-sizing: border-box;
+    --square-size : 600px;
 }
 
-.container
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    /* position: relative; */
+    width: 100vw;
+    height: 100vh;
+}
+
+.container {
+    width: var(--square-size);
+    height: var(--square-size);
+    border: 1px solid grey;
+    box-sizing: content-box;
+}
