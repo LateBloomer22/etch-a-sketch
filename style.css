@@ -16,6 +16,13 @@ body {
     height: 100vh;
 }
 
+.main{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    
+}
+
 .container {
     width: var(--square-size);
     height: var(--square-size);
