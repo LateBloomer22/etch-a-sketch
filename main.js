@@ -1,17 +1,39 @@
-// Slider input for user
 let slider = document.getElementById("input");
 let sliderOutput = document.getElementById("sliderOutput");
 const container = document.getElementById("container");
+let eraserBtn = document.getElementById("eraser");
+let isOn = false;
+
 
 sliderOutput.textContent = `${slider.value} x ${slider.value}`;
 createGrid(slider.value);
 
+// Slider input for user
 slider.oninput = function() {
-    container.innerHTML = "";
+    reset();
     sliderOutput.textContent = `${this.value} x ${this.value}`;
     createGrid(this.value);
+    
 }
- 
+
+// Eraser button for user
+eraserBtn.addEventListener("click", () => {
+    isOn = !isOn;
+    eraserBtn.style["backgroundColor"] = isOn ? "#007FFF" : "white";
+    if(isOn){
+        let elements = document.querySelectorAll('.grid-item');
+        elements.forEach(el => {
+            el.addEventListener("mouseover", () => {
+                eraser(el);
+            });
+        });
+    } 
+    else {
+        applyStyle();
+    };
+});
+
+
 function createGrid(side) {
     for (let i = 1; i <= side*side; i++){
         let cell = document.createElement("div");
@@ -41,6 +63,19 @@ function applyBackground (elem) {
     let b = Math.floor(Math.random() * 256);
     elem.style["background-color"] = `rgb(${r},${g},${b})`;
 }
+
+function eraser(elem) {
+    elem.style["background-color"] = "white";
+}
+
+function reset() {
+    container.innerHTML = "";
+    isOn = false;
+    eraserBtn.style["backgroundColor"] = "white";
+}
+
+
+
 
 
 
