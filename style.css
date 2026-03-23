@@ -39,11 +39,6 @@ body {
     flex-wrap: wrap;
 }
 
-.grid-item {
-    /* width: calc(var(--square-size)/);
-    height: calc(var(--square-size)/); */
-    border: 1px solid black;
-}
 
 .footer {
     display: flex;
