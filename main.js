@@ -3,6 +3,7 @@ let sliderOutput = document.getElementById("sliderOutput");
 const container = document.getElementById("container");
 let eraserBtn = document.getElementById("eraser");
 let darkenBtn = document.getElementById("darken");
+let resetBtn = document.getElementById("reset");
 let isOn = false;
 let isDarken = false;
 
@@ -36,6 +37,17 @@ darkenBtn.addEventListener("click", () => {
     applyStyle();
 });
 
+// Reset option
+resetBtn.addEventListener("click", () => {
+    resetEraser();
+    resetDarken();
+    let elements = document.querySelectorAll('.grid-item');
+    elements.forEach(el => {
+        el.style["background-color"] = "rgba(255,255,255,1)";
+    });
+    applyStyle();
+});
+
 function createGrid(side) {
     for (let i = 1; i <= side*side; i++){
         let cell = document.createElement("div");
@@ -51,7 +63,7 @@ function applyStyle() {
         Object.assign (el.style, {
             width: `calc(600px/${slider.value})`,
             height: `calc(600px/${slider.value})`,
-            border: `0.5px solid grey`
+            border: `0.5px solid grey`,
         });
         el.addEventListener("mouseover", () => {
             if (isOn) {
